@@ -16,11 +16,26 @@
         <li>
           <a routerLink="teams">Teams</a>
         </li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a href="#" class="btn btn-primary">Log In</a>
+          </li>
+          <li>
+              <a href="#" class="btn btn-warning">Register</a>
+          </li> 
       </ul>
     </div>
+   
   </div>
 </div>
 
 <div class = "container">
   <router-outlet></router-outlet>
 </div>
+<style>
+   btn{
+      max-width: 110px;
+    }
+</style>

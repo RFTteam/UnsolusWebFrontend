@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { routes } from './app.router';
 import { AppComponent } from './app.component';
+import { Dota2Component } from './dota2/dota2.component';
+import { LeagueComponent } from './league/league.component';
 import { PlayersComponent } from './players/players.component';
 import { TeamsComponent } from './teams/teams.component';
 
@@ -12,7 +14,9 @@ import { TeamsComponent } from './teams/teams.component';
   declarations: [
     AppComponent,
     PlayersComponent,
-    TeamsComponent
+    TeamsComponent,
+    Dota2Component,
+    LeagueComponent
    
   ],
   imports: [

@@ -3,7 +3,16 @@
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" formControlName="name">
+      <input type="text" #refName class="form-control" formControlName="name">
+      <div *ngIf="userForm.controls['name'].hasError('required')" class="alert alert-danger">
+        Empty username
+      </div>
+      <div *ngIf="userForm.controls['name'].hasError('minlength')" class="alert alert-danger">
+          Username must be atleast 5 characters
+      </div>
+      <div *ngIf="userForm.controls['name'].hasError('maxlength')" class="alert alert-danger">
+          Username cannot exceed 15 characters
+      </div>  
     </div>
     <div class="form-group">
       <label>Email</label>
@@ -15,7 +24,11 @@
     </div>
     <div class="form-group">
       <label>Date of Birth</label>
-      <input type="text" class="form-control" formControlName="birthday">
+      <input type="date" class="form-control" [ngModel]="birthday | date:'yyyy-MM-dd'" (ngModelChange)="birthday = $event" formControlName="birthday">
+      {{birthday}}
+      <div *ngIf="userForm.controls['birthday'].hasError('required')" class="alert alert-danger">
+          Year of birth should be four digits
+        </div>
     </div>
     <div class="form-group">
       <label>Country</label>

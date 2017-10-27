@@ -6,6 +6,7 @@ import { Dota2Component } from './dota2/dota2.component';
 import { LeagueComponent } from './league/league.component';
 import { PlayersComponent } from './players/players.component';
 import { TeamsComponent } from './teams/teams.component';
+import { RegisterComponent } from './register/register.component';
 
 export const router: Routes = [
     { path: '', redirectTo: '', pathMatch: 'full'},
@@ -18,7 +19,8 @@ export const router: Routes = [
         children: [
             {path: 'players', component: PlayersComponent },
             { path: 'teams', component: TeamsComponent }
-    ] }
+    ] },
+    { path: 'register', component: RegisterComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

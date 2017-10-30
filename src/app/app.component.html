@@ -18,10 +18,13 @@
           </li>    
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li *ngIf="!isLoggedIn">
             <a routerLink="login" class="btn btn-primary" id="login">Login</a>
           </li>
-          <li>
+          <li *ngIf="isLoggedIn">
+              <a (click)="logout()" class="btn btn-primary" >Logout</a>
+          </li>
+          <li *ngIf="!isLoggedIn">
             <a routerLink="register" class="btn btn-warning" id="register">Register</a>
           </li> 
         </ul>
@@ -33,3 +36,4 @@
   <router-outlet></router-outlet>
   <alert></alert>
 </div>
+

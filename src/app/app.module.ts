@@ -1,26 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { ReactiveFormsModule } from '@angular/forms';
+
+
+// a fake backend elkészítéséhez
+import { fakeBackendProvider } from './helper/index';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
 
 import { routes } from './app.router';
 import { AppComponent } from './app.component';
-import { Dota2Component } from './dota2/dota2.component';
-import { LeagueComponent } from './league/league.component';
-import { PlayersComponent } from './players/players.component';
-import { TeamsComponent } from './teams/teams.component';
-import { RegisterComponent } from './register/register.component';
+
+import { AlertComponent } from './directives/index';
+import { AuthGuard } from './guards/index';
+import { AlertService, AuthenticationService, UserService } from './services/index';
+
+import { Dota2Component } from './dota2/index';
+import { LeagueComponent } from './league/index';
+import { PlayersComponent } from './players/index';
+import { TeamsComponent } from './teams/index';
+
+import { LoginComponent } from './login/index';
+import { RegisterComponent } from './register/index';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     PlayersComponent,
     TeamsComponent,
     Dota2Component,
     LeagueComponent,
+    LoginComponent,
     RegisterComponent
-   
   ],
   imports: [
     BrowserModule,
@@ -29,7 +42,17 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     routes
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+
+    // fake backend készítéséhez
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

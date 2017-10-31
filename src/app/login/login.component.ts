@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { AlertService, AuthenticationService } from '../services/index';
 
 @Component({
@@ -12,6 +11,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    
 
     constructor(
         private route: ActivatedRoute,
@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
     
-
-    login() {
+    login() {  
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-
 // a fake backend elkészítéséhez
 import { fakeBackendProvider } from './helper/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';

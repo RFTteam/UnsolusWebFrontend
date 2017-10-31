@@ -18,11 +18,11 @@ export class AppComponent  {
   ) { }
 
   /**
-* Be van jelentkezve a felhasználó?
-*/
-get isLoggedIn(){
-  return this.authService.isLoggedIn();
-}
+  * Be van jelentkezve a felhasználó?
+  */
+  get isLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
   /**
    * Kijelentkezés
    */

@@ -41,4 +41,42 @@ btn{
     height: 50px;
     margin: 2px -10px 2px 5px;
   }
-  
+  #dropbtn {
+    width: 90px;
+    height: 50px;
+    margin: 2px -10px 2px 5px;
+    cursor: pointer;
+    color: #808080;
+    font-weight: bold;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #808080;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #FFA500}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}

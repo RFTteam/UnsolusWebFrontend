@@ -22,8 +22,15 @@
             <a routerLink="login" class="btn btn-primary" id="login">Login</a>
           </li>
           <li *ngIf="isLoggedIn">
-              <a (click)="logout()" class="btn btn-primary" >Logout</a>
-          </li>
+            <div class="dropdown" >
+                <button class="btn btn-default" id="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
+                    <a href="#">Settings</a>
+                    <a href="#">Profile</a>
+                    <a (click)="logout()" >Logout</a>
+                </div>
+            </div>
+        </li>
           <li *ngIf="!isLoggedIn">
             <a routerLink="register" class="btn btn-warning" id="register">Register</a>
           </li> 

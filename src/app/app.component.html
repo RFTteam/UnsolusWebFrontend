@@ -1,43 +1,41 @@
 
-<div class="navbar navbar-default">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-      <div class="navbar-brand">
-          <img src="assets/unsolus.png" id="image">      
-      </div>
-      <div class="navbar-header"> 
-        <a href="../" class="navbar-brand" id="header">
-          <h2>Unsolus</h2></a>
-      </div>
-      <div class="navbar-collapse collapse" id="navbar-main">
-        <ul class="nav navbar-nav">
-          <li>
-            <a routerLink="dota2" id="dota"></a>
+      <a class="navbar-brand">
+          <img src="assets/unsolus.png" id="image">
+          <h3>Unsolus</h3>    
+      </a>
+     
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="dota2" id="dota"></a>
           </li>
-          <li>
-            <a routerLink="league" id="legends"></a>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="league" id="legends"></a>
           </li>    
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li *ngIf="!isLoggedIn">
-            <a routerLink="login" class="btn btn-primary" id="login">Login</a>
+            <a routerLink="login" class="btn btn-secondary my-2 my-sm-0" id="login">Login</a>
           </li>
           <li *ngIf="isLoggedIn">
             <div class="dropdown" >
-                <button class="btn btn-default" id="dropbtn">Dropdown</button>
-                <div class="dropdown-content">
-                    <a href="#">Settings</a>
-                    <a href="#">Profile</a>
-                    <a (click)="logout()" >Logout</a>
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" (click)="logout()" >Logout</a>
                 </div>
             </div>
         </li>
           <li *ngIf="!isLoggedIn">
-            <a routerLink="register" class="btn btn-warning" id="register">Register</a>
+            <a routerLink="register" class="btn btn-secondary my-2 my-sm-0" id="register">Register</a>
           </li> 
         </ul>
       </div>
   </div>
-</div>
+</nav>
 
 <div class = "container">
   <router-outlet></router-outlet>

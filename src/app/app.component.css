@@ -8,10 +8,16 @@ btn{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    margin: -40px -30px 0 -30px;
+    margin: -30px -100px -40px -140px;
   }
-  #header{
-    margin: -25px 40px 0 -25px;
+  h3{
+    margin: -30px 0px 0px -45px;
+    border-radius: 50%;
+    position: relative;
+  }
+  #navbarColor01{
+    margin: 0px 0px 0px 0px;
+
   }
   #dota{
     width: 45px;
@@ -41,21 +47,22 @@ btn{
     height: 50px;
     margin: 2px -10px 2px 5px;
   }
-  #dropbtn {
-    width: 90px;
+  #btnGroupDrop1{
+    width: 110px;
     height: 50px;
-    margin: 2px -10px 2px 5px;
+    padding: 2px 2px 2px 2px;
+    margin: 2px 2px 2px 2px;
     cursor: pointer;
     color: #808080;
     font-weight: bold;
 }
 
-.dropdown {
+.dropdown{
     position: relative;
     display: inline-block;
 }
 
-.dropdown-content {
+.dropdown-menu {
     display: none;
     position: absolute;
     
@@ -64,19 +71,19 @@ btn{
     z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-menu a {
     color: #808080;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #FFA500}
+.dropdown-menu a:hover {background-color: rgb(80, 76, 76)}
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-menu{
     display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown:hover #btnGroupDrop1 {
     background-color: #3e8e41;
 }

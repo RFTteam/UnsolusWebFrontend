@@ -16,9 +16,9 @@
           </li>    
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li *ngIf="!isLoggedIn">
-            <a routerLink="login" class="btn btn-secondary my-2 my-sm-0" id="login">Login</a>
-          </li>
+         <!-- <li *ngIf="!isLoggedIn">
+            <a href="#" [routerLink]="['/login']" class="btn btn-secondary my-2 my-sm-0">Login</a>
+          </li>-->
           <li *ngIf="isLoggedIn">
             <div class="dropdown" >
                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
@@ -30,7 +30,7 @@
             </div>
         </li>
           <li *ngIf="!isLoggedIn">
-            <a routerLink="register" class="btn btn-secondary my-2 my-sm-0" id="register">Register</a>
+            <a href="#" [routerLink]="['/register']" class="btn btn-secondary my-2 my-sm-0">Register</a>
           </li> 
         </ul>
       </div>
@@ -39,6 +39,6 @@
 
 <div class = "container">
   <router-outlet></router-outlet>
-  <alert></alert>
+  
 </div>
 

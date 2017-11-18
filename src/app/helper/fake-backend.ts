@@ -1,4 +1,4 @@
-import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod, XHRBackend, RequestOptions } from '@angular/http';
+/*import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod, XHRBackend, RequestOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
@@ -152,4 +152,4 @@ export let fakeBackendProvider = {
     provide: Http,
     useFactory: fakeBackendFactory,
     deps: [MockBackend, BaseRequestOptions, XHRBackend]
-};
+};*/

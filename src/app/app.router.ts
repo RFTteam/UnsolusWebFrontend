@@ -9,6 +9,7 @@ import { TeamsComponent } from './teams/index';
 
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+import { ProfileComponent } from './profile/profile.component';
 
 import { AuthGuard } from './guards/index';
 
@@ -25,7 +26,9 @@ export const router: Routes = [
             { path: 'teams', component: TeamsComponent }
     ] },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent }
+    { path: 'register', component: RegisterComponent },
+    { path: 'profile', component: ProfileComponent }
+
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

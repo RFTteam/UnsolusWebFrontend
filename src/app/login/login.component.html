@@ -1,5 +1,9 @@
   <h2>Login</h2>
+  
   <form (ngSubmit)="onLogin(f)" #f="ngForm">
+    <div [hidden]="!authentication_error">
+                Authentication failed!
+    </div>
       <div class="form-group" >
         <label for="Email">E-mail</label>
         <input type="Email" id="Email" class="form-control" name="Email" ngModel required>

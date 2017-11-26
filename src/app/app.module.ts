@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule , ConnectionBackend} from '@angular/http';
 
 // a fake backend elkészítéséhez
 //import { fakeBackendProvider } from './helper/index';
@@ -22,6 +22,7 @@ import { TeamsComponent } from './teams/index';
 
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,19 +33,22 @@ import { RegisterComponent } from './register/index';
     Dota2Component,
     LeagueComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routes
+    routes,
+    JsonpModule
   ],
   providers: [
    // AuthGuard,
    // AlertService,
     AuthenticationService,
-    UserService,
+    UserService
+    
 
     // fake backend készítéséhez
     //fakeBackendProvider,

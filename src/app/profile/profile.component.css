@@ -1,0 +1,27 @@
+.border-primary{
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 20px 0px 10px 260px;
+  }
+
+  .bg-warning{
+    width: 650px;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: -260px 0px 10px 560px;
+  }
+
+  .h3 {
+   
+  }
+
+  .border-warning{
+    width: 250px;
+    height: 540px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: -260px 0px -160px -90px;
+  }

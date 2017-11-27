@@ -13,51 +13,54 @@ import { AuthenticationService} from '../services/authentication.service';
   providers: [UserService]
 })
 export class ProfileComponent implements OnInit {
-  @Input() currentUser : any;
-  user: any;
+  user: User[] = [];
+  users: User[] = [];
   editing = false;
-  editValue = '';
+  //editValue = '';
 
   constructor(private userService: UserService){
 
    }
 
   ngOnInit(){
-    this.user = this.userService.getUser();
-    localStorage.setItem('currentUser', JSON.stringify({
-      Email: this.user.Email,
-      token: this.user.token,
-      id: this.user.id,
-      Username: this.user.Username,
-      Language: this.user.Language,
-      Country: this.user.Country,
-      Birthday: this.user.Birthday,
-      Password: this.user.Password
-    }));  
+    this.getUser();
+    this.getUsers(); 
+  }
 
-    console.log(this.currentUser.Username);
-    console.log(this.currentUser.token);
-    
+  getUser(){
+    this.userService.getUser()
+        .subscribe(user =>{
+          this.user = user;
+        })
+        
+    }
+  
+
+  getUsers(){
+    this.userService.getUsers()
+        .subscribe(users => {
+          this.users = users;
+
+        })
   }
 
   onEdit(){
     this.editing = true;
-    this.editValue = this.currentUser.Username;
+   // this.editValue = this.user;
   }
-
+  
   onUpdate(){
-    this.userService.update(this.currentUser.Username, this.currentUser.Email,this.currentUser.Password,this.currentUser.Birthday,this.currentUser.Country,this.currentUser.Language)
-      .subscribe(
-        (user: User) => {
-          this.currentUser = user;
-          this.editValue = '';
+    this.userService.updateUser(this.user)
+      .subscribe(user => {
+          this.user = user;
+        //  this.editValue = '';
         }
       );
     this.editing = false;
   }
 
   onCancel(){
-    this.editValue = '';
+   // this.editValue = '';
     this.editing = false;
   }
 

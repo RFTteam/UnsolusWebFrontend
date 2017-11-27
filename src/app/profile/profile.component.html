@@ -1,7 +1,47 @@
-<div class="panel panel-default">
+<div class="card border-primary">
+        <div class="card-body">
+          <blockquote class="card-blockquote">
+             
+            <h1>{{user.Username}}</h1>
+            <h4>{{user.Email}}</h4>
+          </blockquote>
+        </div>
+</div>
+
+<div class="card text-white bg-warning">
+            <div class="card-body">
+              <blockquote class="card-blockquote">
+                    <div class="form-group">
+                            <label for="{{user.Birthday}}">Date of Birth</label>
+                            <select class="form-control" id="year">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+              </blockquote>
+            </div>
+</div>
+<div class="card border-warning">
+                <div class="card-body">
+                  <blockquote class="card-blockquote">
+                        <button type="button" class="btn btn-warning">Create Team</button>
+                        <footer>or</footer>
+                        <button type="button" class="btn btn-warning">Join Team</button>
+                  </blockquote>
+                </div>
+</div>
+<!--<div class="panel panel-default">
     <div class="panel-body">
       
-       <h3></h3>
+        <ul>
+            <li>
+                {{user.Username}}
+               
+            </li>
+        </ul>
 
     </div>
     <div class="panel-footer">
@@ -16,3 +56,34 @@
     </div>
 
 </div>
+<form>
+    <fieldset>
+        <legend>Legend</legend>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="Email" class="form-control" placeholder={{user.Email}}>
+        </div>
+    </fieldset>
+</form>
+-->
+<!--<div>
+        <table class="table table-striped table-hover table-bordered" *ngFor="let user of users" >
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Username</th>
+                        <th>Column heading</th>
+                        <th>Column heading</th>
+                        <th>Column heading</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{user.Username}}</td>
+                        <td>Column content</td>
+                        <td>Column content</td>
+                        <td>Column content</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+-->

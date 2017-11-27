@@ -30,19 +30,37 @@ export class UserService {
          {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})});
      }
 
-    getUser(): Observable<any>{
+    getUsers(): Observable<User[]>{
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
        // const token = this.authService.getToken();
-       // let headers = new Headers({ 'Authorization': 'Bearer' + currentUser.token });
-        //let options = new RequestOptions({ headers: headers });
-            return this.http.get('http://localhost:8000/api/user?token=' +  currentUser.token)
-                .map((response: Response) =>{
-                     <User>response.json();
-                    
-            }
-        )
+        let headers = new Headers({ 'Authorization': 'Bearer' + currentUser.token });
+        let options = new RequestOptions({ headers: headers });
+            return this.http.get('http://localhost:8000/api/users?token=' +  currentUser.token ,options)
+                .map(this.extract)
+
+        
     }
-    
+    getUser(): Observable<User[]>{
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+       // const token = this.authService.getToken();
+        let headers = new Headers({ 'Authorization': 'Bearer' + currentUser.token });
+        let options = new RequestOptions({ headers: headers });
+            return this.http.get('http://localhost:8000/api/user?token=' +  currentUser.token ,options)
+                .map(this.extract);
+
+        
+    }
+    updateUser(user){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+       // const token = this.authService.getToken();
+        let headers = new Headers({ 'Authorization': 'Bearer' + currentUser.token });
+        let options = new RequestOptions({ headers: headers });
+            return this.http.put('http://localhost:8000/api/user?token=' +  currentUser.token ,options)
+                .map((response: Response) => {
+                    return response.json() }
+                );
+    }
+    /*
        update(Username: string,
               Email: string,
               Password: string,
@@ -59,11 +77,17 @@ export class UserService {
                     
                 );
        }
+    */
     /*
        delete(_id: string) {
            return this.http.delete('/users/' + _id);
        }
     */
+    private extract(response: Response){
+        let body = response.json();
+        return body || [];
+    }
+
     private jwt() {
         // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

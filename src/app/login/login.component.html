@@ -1,21 +1,21 @@
-  <h2>Login</h2>
-  
-  <form (ngSubmit)="onLogin(f)" #f="ngForm">
-    <div [hidden]="!authentication_error">
-                Authentication failed!
+<form (ngSubmit)="onLogin(f)" #f="ngForm">
+  <div [hidden]="!authentication_error">Authentication failed!</div>
+    <div class="card text-white bg-warning">
+      <div class="card-body" >
+        <h2 id="login">Login</h2>
+        <div class="form-group" >
+            <label for="Email" id="label">E-mail</label>
+            <input type="Email" id="input" class="form-control" name="Email" ngModel required>
+        </div>
+        <div class="form-group" >
+              <label for="Password" id="label">Password</label>
+              <input type="Password" id="input" class="form-control" name="Password" ngModel required>
+        </div> 
+        <div class="form-group">
+              <button id="logButton" type="submit" [disabled]="!f.valid" class="btn btn-primary">Login</button>     
+        </div>
+      <button id="cancelButton" [routerLink]="['/register']" class="btn btn-primary">Cancel</button>
     </div>
-      <div class="form-group" >
-        <label for="Email">E-mail</label>
-        <input type="Email" id="Email" class="form-control" name="Email" ngModel required>
-     </div>
-      <div class="form-group" >
-          <label for="Password">Password</label>
-          <input type="Password" class="form-control" name="Password" ngModel required>
-      </div>
-      
-      <div class="form-group">
-          <button type="submit" [disabled]="!f.valid" class="btn btn-warning">Login</button>
-          <a [routerLink]="['/register']" class="btn btn-primary">Cancel</a>
-      </div>
-  </form>
+  </div>
+</form>
 

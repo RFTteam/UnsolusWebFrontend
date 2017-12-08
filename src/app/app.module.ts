@@ -24,6 +24,8 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ProfileComponent } from './profile/profile.component';
 
+import { MyDatePickerModule } from 'mydatepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,7 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent
   ],
   imports: [
+    MyDatePickerModule,
     BrowserModule,
     FormsModule,
     HttpModule,

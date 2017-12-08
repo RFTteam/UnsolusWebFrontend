@@ -2,8 +2,12 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { User } from '../models/index';
+import { Language } from '../models/language.interface';
+import { Country} from '../models/country.interface';
 import { UserService } from '../services/user.service';
 import { AuthenticationService} from '../services/authentication.service';
+
+import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
 
 @Component({
   moduleId: module.id,
@@ -13,28 +17,71 @@ import { AuthenticationService} from '../services/authentication.service';
   providers: [UserService]
 })
 export class ProfileComponent implements OnInit {
-  user: User[] = [];
+ 
+  user: User;
   users: User[] = [];
-  editing = false;
-  //editValue = '';
+  languages: Language[] = [];
+  countries: Country[] = [];
+  //editing = false;
+  selectedLanguage: string;
+  selectedCountry: string;
+  selectedDate: string;
+  validPassword: string;
+
+  myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'yyyy-mm-dd',
+  };
 
   constructor(private userService: UserService){
-
+    
    }
 
   ngOnInit(){
     this.getUser();
+    //console.log(this.user);
+   // this.selectedDate = this.user.Birthday;
+    //this.selectedCountry = this.user.country;
+    //this.selectedLanguage = this.user.Language;
+    
     this.getUsers(); 
+    this.getLanguages();
+    this.getCountries();
+    //console.log(this.languages);
   }
-
+  
+  onDateChanged(event: IMyDateModel) {
+    //console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(),
+    // ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    console.log(event);
+    this.selectedDate = event.formatted;
+  }
+  getCountries(){
+    this.userService.getCountries()
+    .subscribe(countries=> {
+      this.countries = countries;
+    })
+  }
+  getLanguages(){
+    this.userService.getLanguages()
+        .subscribe(languages => {
+          this.languages = languages;
+        })
+  }
   getUser(){
     this.userService.getUser()
-        .subscribe(user =>{
+        .subscribe((user: User) =>{
           this.user = user;
+          console.log(user);
+          console.log(user.DateOfBirth);
+          
+          console.log(user.language);
+          this.selectedCountry = this.user.country;
+          console.log(this.selectedCountry);
+          this.selectedDate = this.user.DateOfBirth;
+          this.selectedLanguage = this.user.language;
         })
-        
     }
-  
+   
 
   getUsers(){
     this.userService.getUsers()
@@ -45,23 +92,32 @@ export class ProfileComponent implements OnInit {
   }
 
   onEdit(){
-    this.editing = true;
+   // this.editing = true;
    // this.editValue = this.user;
   }
   
   onUpdate(){
-    this.userService.updateUser(this.user)
-      .subscribe(user => {
-          this.user = user;
-        //  this.editValue = '';
+    this.userService.updateUser(this.selectedDate, this.selectedCountry, this.selectedLanguage)
+      .subscribe((user: User) => {
+         // this.user.Password = this.validPassword;
+          //console.log(this.user.Password);
+          this.user.country = this.selectedCountry;
+          console.log(this.user.country);
+          //this.selectedCountry = '';
+          this.user.language = this.selectedLanguage;
+          console.log(user.language);
+          //this.selectedLanguage = '';
+          this.user.DateOfBirth = this.selectedDate;
+          console.log(user.DateOfBirth);
+          //this.selectedDate = '';
         }
       );
-    this.editing = false;
+   // this.editing = false;
   }
 
   onCancel(){
    // this.editValue = '';
-    this.editing = false;
+   // this.editing = false;
   }
 
 }

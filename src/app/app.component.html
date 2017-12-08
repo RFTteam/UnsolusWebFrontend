@@ -1,42 +1,41 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-      <a href="../" class="navbar-brand">
-          <img src="assets/unsolus.png" id="image">
-          <h3>Unsolus</h3>    
-      </a>
-     
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="dota2" id="dota"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="league" id="legends"></a>
-          </li>    
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-         <li *ngIf="!isLoggedIn">
-            <a href="#" [routerLink]="['/login']" class="btn btn-secondary my-2 my-sm-0">Login</a>
-          </li>
-          <li *ngIf="isLoggedIn">
-            <div class="dropdown" >
-                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a [routerLink]="['/profile']" class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" (click)="logout()" >Logout</a>
-                </div>
-            </div>
+    <a href="../" class="navbar-brand">
+      <img src="assets/unsolus.png" id="image">
+      <h3>Unsolus</h3>    
+    </a>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="dota2" id="dota"></a>
         </li>
-          <li *ngIf="!isLoggedIn">
-            <a href="#" [routerLink]="['/register']" class="btn btn-secondary my-2 my-sm-0">Register</a>
-          </li> 
-        </ul>
-      </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="league" id="legends"></a>
+        </li>    
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!isLoggedIn">
+          <button id="loginButton" [routerLink]="['/login']" class="btn btn-warning">Login</button>
+        </li>
+        <li *ngIf="isLoggedIn">
+          <ul class="nav nav-pills">
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Username</a>
+              <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+              <a class="dropdown-item" href="#">Settings</a>
+              <a [routerLink]="['/profile']" class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" (click)="logout()" >Logout</a>
+              </div>
+            </div>
+          </ul>
+        </li>
+        <li *ngIf="!isLoggedIn">
+          <button id="regButton" [routerLink]="['/register']" class="btn btn-secondary">Register</button>
+        </li> 
+      </ul>
+    </div>
   </div>
 </nav>
-
 <div class = "container">
   <router-outlet></router-outlet>
 </div>

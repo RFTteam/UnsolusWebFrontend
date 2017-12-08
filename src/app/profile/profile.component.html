@@ -1,37 +1,58 @@
-<div class="card border-primary">
-        <div class="card-body">
-          <blockquote class="card-blockquote">
-             
-            <h1>{{user.Username}}</h1>
-            <h4>{{user.Email}}</h4>
-          </blockquote>
-        </div>
+<div>
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link">User</a>
+            <div class="card border-primary">
+                <div class="card-body">
+                    <blockquote class="card-blockquote">
+                        <label id="Username">{{user?.Username}}</label>
+                        <label id="Email">{{user?.Email}}</label>
+                        <label >{{user?.DateOfBirth}}</label>
+                        <label >{{user?.country}}</label>
+                        <label >{{user?.language}}</label>
+                    </blockquote>
+                </div>
+            </div>
+        </li>
+        <li class="page-item">
+            <a class="page-link">+</a>
+        </li>
+    </ul>
 </div>
 
 <div class="card text-white bg-warning">
-            <div class="card-body">
-              <blockquote class="card-blockquote">
-                    <div class="form-group">
-                            <label for="{{user.Birthday}}">Date of Birth</label>
-                            <select class="form-control" id="year">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                            </select>
-                          </div>
-              </blockquote>
-            </div>
+    <div class="card-body" >
+        <blockquote class="card-blockquote" id="Birthday" >
+            <label for="DateOfBirth">Date of Birth</label>
+            <my-date-picker  [options]="myDatePickerOptions"
+            (dateChanged)="onDateChanged($event)" [placeholder]="user?.DateOfBirth"></my-date-picker>
+            
+        </blockquote>
+        <div class="form-group" >
+            <label for="Country">Country</label>
+            <select class="form-control" id="input" [(ngModel)]="selectedCountry">
+                <option *ngFor="let country of countries" [value]="country"
+                 [selected]="user?.country == country"  >{{country}}</option>
+            </select>
+        </div>
+        <div class="form-group" >
+            <label for="Language">Language</label>
+            <select class="form-control" id="input" [(ngModel)]="selectedLanguage" >
+                <option *ngFor="let language of languages" [value]="language">{{language}}</option>
+            </select>
+        </div>
+        
+        <button type="button" class="btn btn-warning" id="save" (click)="onUpdate()">Save Changes</button>
+    </div>
 </div>
 <div class="card border-warning">
-                <div class="card-body">
-                  <blockquote class="card-blockquote">
-                        <button type="button" class="btn btn-warning">Create Team</button>
-                        <footer>or</footer>
-                        <button type="button" class="btn btn-warning">Join Team</button>
-                  </blockquote>
-                </div>
+    <div class="card-body">
+        <blockquote class="card-blockquote">
+            <button type="button" class="btn btn-warning" id="create">Create Team</button>
+            <footer>or</footer>
+            <button type="button" class="btn btn-warning" id="join">Join Team</button>
+        </blockquote>
+    </div>
 </div>
 <!--<div class="panel panel-default">
     <div class="panel-body">

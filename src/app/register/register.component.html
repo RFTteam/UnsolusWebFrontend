@@ -1,41 +1,25 @@
-
-  <h2>Register</h2>
-  <form (ngSubmit)="onRegister(f)" #f="ngForm">
-      <div class="form-group">
-          <label for="Username">Username</label>
-          <input type="text" class="form-control" name="Username" ngModel required>
-          
-      </div>
-      <div class="form-group" >
-        <label for="Email">E-mail</label>
-        <input type="Email" id="Email" class="form-control" name="Email" ngModel required>
-     </div>
-      <div class="form-group" >
-          <label for="Password">Password</label>
-          <input type="Password" class="form-control" name="Password" ngModel required>
-      </div>
-      <!--
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="birthday">Birthday</label>
-            <input type="text" class="form-control" name="birthday" [(ngModel)]="model.birthday" #password="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Birthday is required</div>
+<form (ngSubmit)="onRegister(f)" #f="ngForm">
+    <div class="card text-white bg-warning">
+        <div class="card-body" >
+            <h2 id="register">Register</h2>
+                <div class="form-group">
+                    <label for="Username" id="label">Username</label>
+                    <input type="text" id="input" class="form-control" name="Username" ngModel required>
+                    
+                </div>
+                <div class="form-group" >
+                    <label for="Email" id="label">E-mail</label>
+                    <input type="Email" id="input" class="form-control" name="Email" ngModel required>
+                </div>
+                <div class="form-group" >
+                    <label for="Password" id="label">Password</label>
+                    <input type="Password" id="input" class="form-control" name="Password" ngModel required>
+                </div>
+                <div class="form-group">
+                    <button id="regButton" type="submit" [disabled]="!f.valid" class="btn btn-primary">Register</button>
+                </div>
+                <button id="cancelButton" [routerLink]="['/login']" class="btn btn-primary">Cancel</button>
         </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                <label for="country">Country</label>
-                <input type="text" class="form-control" name="country" [(ngModel)]="model.country" #password="ngModel" required />
-                <div *ngIf="f.submitted && !username.valid" class="help-block">Country is required</div>
-        </div>
-
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-                    <label for="language">Language</label>
-                    <input type="text" class="form-control" name="language" [(ngModel)]="model.language" #password="ngModel" required />
-                    <div *ngIf="f.submitted && !username.valid" class="help-block">Language is required</div>
-        </div>
-    -->
-      <div class="form-group">
-          <button type="submit" [disabled]="!f.valid" class="btn btn-warning">Register</button>
-          <a [routerLink]="['/login']" class="btn btn-primary">Cancel</a>
-      </div>
-  </form>
+    </div>
+</form>
 

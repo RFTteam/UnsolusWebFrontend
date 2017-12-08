@@ -4,24 +4,66 @@
     background-size: cover;
     background-repeat: no-repeat;
     margin: 20px 0px 10px 260px;
+    text-align: center;
   }
 
   .bg-warning{
-    width: 650px;
-    height: 250px;
+    width: 250px;
+    height: 540px;
     background-size: cover;
     background-repeat: no-repeat;
-    margin: -260px 0px 10px 560px;
+    margin: -260px 0px 10px 960px;
   }
 
-  .h3 {
-   
-  }
+#Username{
+  text-align: center; 
+  margin: 5px;
+  font-size: 3em;
+ 
+}
 
+#Email{
+  text-align: justify;
+  font-size: 200%;
+}
+
+#Birthday{
+  width: 210px;
+  
+}
+#input{
+  width: 210px;
+  height: 50px;
+}
   .border-warning{
     width: 250px;
     height: 540px;
     background-size: cover;
     background-repeat: no-repeat;
-    margin: -260px 0px -160px -90px;
+    margin: -550px 0px -160px -90px;
+    text-align: center;
+  }
+
+  #create{
+    width: 200px;
+    height: 60px;
+    text-align: center;
+  }
+  #pswd{
+    width: 210px;
+    height: 60px;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+  }
+  #save{
+    width: 210px;
+    height: 60px;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+  }
+
+  #join{
+    width: 200px;
+    height: 60px;
+    text-align: center;
   }

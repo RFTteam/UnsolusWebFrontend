@@ -4,7 +4,7 @@ import { AlertService, AuthenticationService } from '../services/index';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
     selector: 'app-login',
-    
+    styleUrls: ['./login.component.css'],
     templateUrl: './login.component.html'
 })
 

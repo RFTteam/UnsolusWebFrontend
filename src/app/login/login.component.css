@@ -1,33 +1,35 @@
 input.ng-invalid {
     border-left: 5px solid red;
 }
+
 input.ng-valid {
     border-left: 5px solid green;
 }
-.bg-warning{
-    width: 350px;
-    height: 550px;
-    margin: auto;
-}
-#register{
-    font-size: 42px;
-     text-align: center;
- }
 
- #input{
+#input{
     width: 250px;
     margin: auto;
+}
+.bg-warning{
+    width: 350px;
+    height: 500px;
+    margin: auto;
+}
+
+#login{
+   font-size: 42px;
+    text-align: center;
 }
 #label{
     margin: 10px 0px 10px 30px;
 }
-#regButton{
+#logButton{
     width: 200px;
     height: 50px;
-    margin: 20px 0px 0px 55px;
+    margin: 30px 0px 0px 55px;
 }
 #cancelButton{
     width: 200px;
     height: 50px;
-    margin: 5px 0px 0px 55px;
+    margin: 10px 0px 0px 55px;
 }

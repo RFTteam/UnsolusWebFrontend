@@ -1,9 +1,10 @@
 export interface Player {
-    Gamename: string;
-    Gamername: string;
+    GamerId: number;
+    game: string;
+    GamerName: string;
     Rank: string;
     Role: string;
-    Region: string;
     Style: string;
+    Server: string;
     Motivation: string;
 }

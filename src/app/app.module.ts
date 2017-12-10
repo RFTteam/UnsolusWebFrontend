@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule, JsonpModule , ConnectionBackend} from '@angular/http';
 
 // a fake backend elkészítéséhez
@@ -18,6 +18,7 @@ import { AuthenticationService, UserService} from './services/index';
 import { Dota2Component } from './dota2/index';
 import { LeagueComponent } from './league/index';
 import { PlayersComponent } from './players/index';
+import { AllPlayersComponent } from './players/index';
 import { TeamsComponent } from './teams/index';
 
 import { LoginComponent } from './login/index';
@@ -31,6 +32,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     AppComponent,
     //AlertComponent,
     PlayersComponent,
+    AllPlayersComponent,
     TeamsComponent,
     Dota2Component,
     LeagueComponent,
@@ -44,7 +46,8 @@ import { MyDatePickerModule } from 'mydatepicker';
     FormsModule,
     HttpModule,
     routes,
-    JsonpModule
+    JsonpModule,
+    ReactiveFormsModule 
   ],
   providers: [
    // AuthGuard,

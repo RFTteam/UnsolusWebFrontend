@@ -71,12 +71,12 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser()
         .subscribe((user: User) =>{
           this.user = user;
-          console.log(user);
-          console.log(user.DateOfBirth);
+          //console.log(user);
+          //console.log(user.DateOfBirth);
           
-          console.log(user.language);
+          //console.log(user.language);
           this.selectedCountry = this.user.country;
-          console.log(this.selectedCountry);
+          //console.log(this.selectedCountry);
           this.selectedDate = this.user.DateOfBirth;
           this.selectedLanguage = this.user.language;
         })
@@ -98,21 +98,12 @@ export class ProfileComponent implements OnInit {
   
   onUpdate(){
     this.userService.updateUser(this.selectedDate, this.selectedCountry, this.selectedLanguage)
-      .subscribe((user: User) => {
-         // this.user.Password = this.validPassword;
-          //console.log(this.user.Password);
+      .subscribe((use: User) => {
           this.user.country = this.selectedCountry;
-          console.log(this.user.country);
-          //this.selectedCountry = '';
           this.user.language = this.selectedLanguage;
-          console.log(user.language);
-          //this.selectedLanguage = '';
           this.user.DateOfBirth = this.selectedDate;
-          console.log(user.DateOfBirth);
-          //this.selectedDate = '';
         }
       );
-   // this.editing = false;
   }
 
   onCancel(){

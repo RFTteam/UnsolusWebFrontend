@@ -1,12 +1,204 @@
-<div class="col-md-6 col-md-offset-3">
-    
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <div *ngFor="let player of players">
+                <div *ngIf="playerExists(player?.game) === 'Fortnite'">
+                    <li class="nav-item" id="gameNav">
+                        <a class="nav-link" (click)="pageChange(2)">Fortnite<span class="sr-only">(current)</span></a>
+                    </li>
+                </div>
+                <div *ngIf="playerExists(player?.game) === 'LeagueofLegends'">
+                    <li class="nav-item" id="gameNav">
+                        <a class="nav-link" (click)="pageChange(3)">League of Legends</a>
+                    </li>
+                </div>
+                <div *ngIf="playerExists(player?.game) === 'Dota2'">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="pageChange(4)">Dota 2</a>
+                    </li>
+                </div>
+            </div>
+            <li class="nav-item" id="newPlus">
+                <a class="nav-link" (click)="pageChange(0)">+</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="block">
+    <div *ngIf="getPageChange() === 0" >
+        <h2 id="register">Player Creation</h2>
+            <form [formGroup]="playerForm" (ngSubmit)="newPlayer()">
 
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.Username}} {{user.Email}}
-           
-        </li>
-    </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
+                <div class="form-group">
+                    <label>Game</label>
+                    <select class="form-control" formControlName="game" (change)="onChange($event.target.value)" >
+                        <option>Fortnite</option>
+                        <option>LeagueofLegends</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Gamername</label>
+                    <input type="text" class="form-control" formControlName="GamerName">
+                </div>
+
+                <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                    <label>Rank</label>
+                    <select class="form-control" formControlName="Rank">
+                            <option *ngFor="let rank of ranks" [ngValue]="rank">{{rank}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'" >
+                    <label>Role</label>
+                    <select class="form-control" formControlName="Role">
+                            <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="selectedGame === 'Fortnite'" >
+                        <label>Role</label>
+                        <select class="form-control" formControlName="Role">
+                                <option>Soldier</option>
+                                <option>Constructor</option>
+                                <option>Ninja</option>
+                                <option>Outlander</option>
+                        </select>
+                </div>
+
+                <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                    <label>Server</label>
+                    <select class="form-control" formControlName="Server">
+                            <option *ngFor="let server of servers" [ngValue]="server">{{server}}</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                        <label>Server</label>
+                        <select class="form-control" formControlName="Server">
+                                <option>America</option>
+                                <option>Europe</option>
+                        </select>
+                </div>
+
+                <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                    <label>Style</label>
+                    <select class="form-control" formControlName="Style">
+                            <option *ngFor="let style of styles" [ngValue]="style">{{style}}</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                        <label>Style</label>
+                        <select class="form-control" formControlName="Style">
+                                <option>Offensive</option>
+                                <option>Defensive</option>
+                        </select>
+                    </div>
+
+                 <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                    <label>Motivation</label>
+                    <select class="form-control" formControlName="Motivation">
+                            <option *ngFor="let motivation of motivations" [ngValue]="motivation">{{motivation}}</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                        <label>Motivation</label>
+                        <select class="form-control" formControlName="Motivation">
+                                <option *ngFor="let motivation of motivations" [ngValue]="motivation">{{motivation}}</option>
+                        </select>
+                    </div>
+                <button id="createButton" type="submit" class="btn btn-primary">Create</button>
+                <button id="cancelButton" [routerLink]="['/profile']" class="btn btn-primary">Cancel</button> 
+            </form>
+        </div>
+    <div *ngIf="getPageChange() === 2">
+            <div *ngFor="let player of players">
+                    <div *ngIf="player?.game === 'Fortnite'">
+                        <div class="form-group" id="name2" >
+                            <label id="label">Gamername</label>
+                            <input type="text" class="form-control" id="input" [(ngModel)]="player.GamerName">
+                        </div>
+        
+                        <div class="form-group" id="role2" >
+                            <label id="label">Role</label>
+                            <select class="form-control" id="input" [(ngModel)]="player.Role">
+                                <option>Soldier</option>
+                                <option>Constructor</option>
+                                <option>Ninja</option>
+                                <option>Outlander</option>
+                            </select>
+                        </div>
+        
+                        <div class="form-group" id="server2">
+                            <label id="label">Server</label>
+                            <select class="form-control" id="input" [(ngModel)]="player.Server">
+                                <option>America</option>
+                                <option>Europe</option>
+                            </select>
+                        </div>
+        
+                        <div class="form-group" id="style2">
+                            <label id="label">Style</label>
+                            <select class="form-control" id="input" [(ngModel)]="player.Style">
+                                    <option>Offensive</option>
+                                    <option>Defensive</option>
+                            </select>
+                        </div>
+        
+                        <div class="form-group" id="motivation2">
+                            <label id="label">Motivation</label>
+                            <select class="form-control" id="input" [(ngModel)]="player.Motivation">
+                                <option *ngFor="let motivation of motivations" [value]="motivation">{{motivation}}</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-warning" id="save" (click)="onUpdate(player?.GamerId)">Save Changes</button>
+                        <button type="button" class="btn btn-warning" id="delete" (click)="onDelete(player?.GamerId)">Delete Player</button>
+                    </div>
+                </div>
+            </div>
+    <div *ngIf="getPageChange() === 3">
+        <div *ngFor="let player of players">
+            <div *ngIf="player?.game === 'LeagueofLegends'">
+                <div class="form-group" id="name" >
+                    <label id="label">Gamername</label>
+                    <input type="text" class="form-control" id="input" [(ngModel)]="player.GamerName">
+                </div>
+
+                <div class="form-group" id="rank">
+                    <label id="label">Rank</label>
+                    <select class="form-control" id="input" [(ngModel)]="player.Rank">
+                        <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="role">
+                    <label id="label">Role</label>
+                    <select class="form-control" id="input" [(ngModel)]="player.Role">
+                        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="server">
+                    <label id="label">Server</label>
+                    <select class="form-control" id="input" [(ngModel)]="player.Server">
+                        <option *ngFor="let server of servers" [value]="server">{{server}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="style">
+                    <label id="label">Style</label>
+                    <select class="form-control" id="input" [(ngModel)]="player.Style">
+                        <option *ngFor="let style of styles" [value]="style">{{style}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="motivation">
+                    <label id="label">Motivation</label>
+                    <select class="form-control" id="input" [(ngModel)]="player.Motivation">
+                        <option *ngFor="let motivation of motivations" [value]="motivation">{{motivation}}</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-warning" id="save" (click)="onUpdate(player?.GamerId)">Save Changes</button>
+                <button type="button" class="btn btn-warning" [routerLink]="['../']" id="delete" (click)="onDelete(player?.GamerId)">Delete Player</button>
+            </div>
+        </div>
+    </div>
 </div>

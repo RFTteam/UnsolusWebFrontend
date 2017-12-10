@@ -1,0 +1,95 @@
+<div id="parent">
+    <div class="card text-white bg-primary" id="filter">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Game</label>
+                <select class="form-control" [(ngModel)]="selectedGame" (ngModelChange)="onSelect(selectedGame)">
+                    <option>Fortnite</option>
+                    <option>LeagueofLegends</option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                <label>Rank</label>
+                <select class="form-control" [(ngModel)]="selectRank" (ngModelChange)="onSelect(selectRank)">
+                    <option *ngFor="let rank of ranks" [value]="rank">{{rank}}</option>
+                </select>
+            </div>
+
+            <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                <label>Role</label>
+                <select class="form-control" [(ngModel)]="selectRole" (ngModelChange)="onSelect(selectRole)">
+                    <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                <label>Role</label>
+                <select class="form-control" [(ngModel)]="selectRole" (ngModelChange)="onSelect(selectRole)">
+                    <option>Soldier</option>
+                    <option>Constructor</option>
+                    <option>Ninja</option>
+                    <option>Outlander</option>
+                </select>
+            </div>
+
+            <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                <label>Server</label>
+                <select class="form-control" [(ngModel)]="selectServer" (ngModelChange)="onSelect(selectServer)">
+                    <option *ngFor="let server of servers" [ngValue]="server">{{server}}</option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                <label>Server</label>
+                <select class="form-control" [(ngModel)]="selectServer" (ngModelChange)="onSelect(selectServer)">
+                    <option>America</option>
+                    <option>Europe</option>
+                </select>
+            </div>
+
+            <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                <label>Style</label>
+                <select class="form-control" [(ngModel)]="selectStyle" (ngModelChange)="onSelect(selectStyle)">
+                    <option *ngFor="let style of styles" [ngValue]="style">{{style}}</option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                <label>Style</label>
+                <select class="form-control" [(ngModel)]="selectStyle" (ngModelChange)="onSelect(selectStyle)">
+                    <option>Offensive</option>
+                    <option>Defensive</option>
+                </select>
+            </div>
+
+            <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+                <label>Motivation</label>
+                <select class="form-control" [(ngModel)]="selectMotivation" (ngModelChange)="onSelect(selectMotivation)">
+                    <option *ngFor="let motivation of motivations" [ngValue]="motivation">{{motivation}}</option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+                <label>Motivation</label>
+                <select class="form-control" [(ngModel)]="selectMotivation" (ngModelChange)="onSelect(selectMotivation)">
+                    <option *ngFor="let motivation of motivations" [ngValue]="motivation">{{motivation}}</option>
+                </select>
+            </div>
+            <!--<button id="createButton" type="submit" class="btn btn-primary">Create</button>-->
+        </div>
+    </div>
+
+    <div id="card-container">
+        <div *ngFor="let player of selectedData" id="cards">
+
+            <div class="card text-white bg-primary mb-3" id="card">
+                <div class="card-header" id="headerGame">{{player.game}}</div>
+                <div class="card-body">
+                    <h4 class="card-title" id="name">{{player.GamerName}}</h4>
+                    <p class="card-text" id="rank">{{player.Rank}}</p>
+                    <p class="card-text" id="role">{{player.Role}}</p>
+
+                    <p class="card-text" id="motivation">{{player.Motivation}}</p>
+                </div>
+                <div class="card-footer" id="headerGame">{{player.Server}}</div>
+            </div>
+
+        </div>
+    </div>
+</div>

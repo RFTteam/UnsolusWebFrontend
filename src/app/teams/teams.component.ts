@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 
+import { Player } from '../models/player.interface';
 import { Team } from '../models/team.interface';
 import { Language } from '../models/language.interface';
 import { Country} from '../models/country.interface';
@@ -15,7 +16,9 @@ import { TeamService } from '../services/team.service';
 })
 export class TeamsComponent implements OnInit {
 
+  members: Player[] = [];
   team: Team;
+  clicked: boolean;
   teams: Team[] = [];
   show: number;
   selectedGame: string;
@@ -41,10 +44,39 @@ export class TeamsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.getMyTeams();
+    //console.log(this.team.TeamID);
+    //this.getTeamMembers(this.team.TeamID);
     this.getLanguages();
     this.getCountries();
   }
 
+  getMyTeams(){
+    this.teamService.getMyTeams()
+    .subscribe(teams => {
+        this.teams = teams;
+        console.log(this.teams);
+      
+        //console.log(this.players[0])
+    })
+  }
+  leaveTeam(id: number){
+    console.log(id);
+    this.teamService.leaveTeam(id)
+        .subscribe();
+
+        setTimeout(location.reload.bind(location), 500);
+  }
+
+  getTeamMembers(id: number){
+    this.teamService.getTeamMembers(id)
+      .subscribe(members=>{
+        this.members = members;
+        console.log(members);
+      })
+
+      setTimeout(function(){this.clicked = true;}.bind(this),660);
+  }
   getCountries(){
     this.userService.getCountries()
     .subscribe(countries=> {
@@ -72,11 +104,14 @@ export class TeamsComponent implements OnInit {
         response => console.log(this.teamForm.value),
         error => console.log(error)
       );
+
+      setTimeout(location.reload.bind(location), 1000);
   }
 
   pageChange(show){
     this.show = show;
-    console.log(show);
+    this.clicked = false;
+    
   }
   getPageChange(){
     return this.show;
@@ -122,6 +157,14 @@ export class AllTeamsComponent extends TeamsComponent implements OnInit {
   ngOnInit() {
     this.getAllTeams();
   }
+
+  joinTeam(id: number){
+    console.log(id);
+    this.teamService.joinTeam(id)
+        .subscribe();
+  }
+  
+
   onSelect(val) {
     console.log("val :",val);
     if(this.selectGame != null){

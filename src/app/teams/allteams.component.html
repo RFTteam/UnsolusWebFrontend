@@ -58,15 +58,19 @@
         <div *ngFor="let team of selectedData" id="cards">
 
             <div class="card text-white bg-primary mb-3" id="card">
-                <div class="card-header" id="headerGame">{{team.game}}</div>
+                <div class="card-header" id="headerGame">{{team.game}} {{team.TeamID}}</div>
                 <div class="card-body">
                     <h4 class="card-title" id="name">{{team.Teamname}}</h4>
                     <p class="card-text" id="rank">{{team.Server}}</p>
                     <p class="card-text" id="role">{{team.country}}</p>
 
                     <p class="card-text" id="motivation">{{team.language}}</p>
+                    <p class="card-text" id="motivation">{{team.Teamgoal}}</p>
                 </div>
-                <div class="card-footer" id="headerGame">{{team.Teamgoal}}</div>
+                <div class="card-footer" id="headerGame">
+                        <button id="join" type="button" [routerLink]="['/team']" class="btn btn-warning" (click)="joinTeam(team.TeamID)">Join</button>
+                </div>
+                
             </div>
 
         </div>

@@ -53,3 +53,9 @@
     text-align: center;
     margin: 5px 0px 5px 0px;
 }
+#join{
+    height:30px;
+    line-height: 8px;
+    text-align: center;
+    border:15px;
+}

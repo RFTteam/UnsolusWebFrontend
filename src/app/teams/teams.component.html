@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar">
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <!--<div *ngFor="let team of teams">-->
+      <div *ngFor="let team of teams">
       <div *ngIf="teamExists(team?.game) === 'Fortnite'">
         <li class="nav-item">
           <a class="nav-link" (click)="pageChange(2)">Fortnite</a>
@@ -12,7 +12,7 @@
           <a class="nav-link" (click)="pageChange(3)">League of Legends</a>
         </li>
       </div>
-      <!--</div>-->
+      </div>
       <li class="nav-item" id="newPlus">
         <a class="nav-link" (click)="pageChange(0)">+</a>
       </li>
@@ -20,12 +20,12 @@
   </div>
 </nav>
 
-<div>
+<div id="block">
   <div *ngIf="getPageChange() === 0">
     <h2>Team Creation</h2>
     <form [formGroup]="teamForm" (ngSubmit)="newTeam()">
-
-      <div class="form-group">
+      <div id="left">
+      <div class="form-group" id="box">
         <label>Game</label>
         <select class="form-control" formControlName="game" (change)="onChange($event.target.value)">
           <option>Fortnite</option>
@@ -33,18 +33,18 @@
         </select>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="box">
         <label>Team Name</label>
         <input type="text" class="form-control" formControlName="Teamname">
       </div>
 
-      <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+      <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'" id="box">
         <label>Server</label>
         <select class="form-control" formControlName="Server">
           <option *ngFor="let server of servers" [ngValue]="server">{{server}}</option>
         </select>
       </div>
-      <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+      <div class="form-group" *ngIf="selectedGame === 'Fortnite'" id="box">
         <label>Server</label>
         <select class="form-control" formControlName="Server">
           <option>America</option>
@@ -52,34 +52,124 @@
         </select>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="box">
         <label>Country</label>
         <select class="form-control" formControlName="country">
           <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
         </select>
       </div>
-
-      <div class="form-group">
+    </div>
+    <div id="right">
+      <div class="form-group" id="box">
         <label>Language</label>
         <select class="form-control" formControlName="language">
           <option *ngFor="let language of languages" [ngValue]="language">{{language}}</option>
         </select>
       </div>
 
-      <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'">
+      <div class="form-group" *ngIf="selectedGame === 'LeagueofLegends'" id="box">
         <label>Team goal</label>
         <select class="form-control" formControlName="Teamgoal">
           <option *ngFor="let goal of goals" [ngValue]="goal">{{goal}}</option>
         </select>
       </div>
-      <div class="form-group" *ngIf="selectedGame === 'Fortnite'">
+      <div class="form-group" *ngIf="selectedGame === 'Fortnite'" id="box">
         <label>Team goal</label>
         <select class="form-control" formControlName="Teamgoal">
           <option *ngFor="let goal of goals" [ngValue]="goal">{{goal}}</option>
         </select>
       </div>
+    </div>
       <button id="createButton" type="submit" class="btn btn-primary">Create</button>
       <button id="cancelButton" [routerLink]="['/profile']" class="btn btn-primary">Cancel</button>
     </form>
   </div>
+
+  <div id="parent">
+  <div *ngIf="getPageChange() === 2" >
+      <h3>Fortnite Teams</h3>
+    <div *ngFor="let team of teams">
+            <div *ngIf="team?.game === 'Fortnite'">
+             <div id="team">
+              <div class="card border-warning mb-3" style="max-width: 20rem;" >
+                  <div class="card-header"><h3>Team: <span style="float:right;">{{team?.Teamname}}</span></h3></div>
+                  <div class="card-body text-warning">
+                    <h4 class="card-title" style="text-align: left;">Server: <span style="float:right;">{{team?.Server}}</span></h4>
+                    <h4 class="card-title" style="text-align: left;">Country: <span style="float:right;">{{team?.country}}</span></h4>
+                    <h4 class="card-title" style="text-align: left;">Language: <span style="float:right;">{{team?.language}}</span></h4>
+                    <h4 class="card-title" style="text-align: left;">Goal: <span style="float:right;">{{team?.Teamgoal}}</span></h4>
+                    <button id="button" type="button" class="btn btn-warning" (click)="leaveTeam(team.TeamID)">Leave Team</button>
+                  </div>
+                  
+                </div>
+                <!--<button type="button" class="btn btn-warning" id="save" (click)="onUpdate(player?.GamerId)">Save Changes</button>
+                <button type="button" class="btn btn-warning" id="delete" (click)="onDelete(player?.GamerId)">Delete Player</button>
+                -->
+             </div>
+                <div id="members">
+                <button id="showB" type="button" class="btn btn-outline-warning" (click)="getTeamMembers(team?.TeamID)"> Show team</button>
+                
+                  <div *ngFor="let member of members">
+                      <div [hidden]="!clicked">
+                    <table id="table" class="table table-hover">
+                        <tbody>
+                          <tr class="table-active">
+                            <td>{{member.GamerName}}</td>
+                            <td>{{member.Server}}</td>
+                            <td>{{member.Role}}</td>
+                            <td>{{member.Style}}</td>
+                            <td>{{member.Motivation}}</td>
+                          </tr>
+                          
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="parent">
+        <div *ngIf="getPageChange() === 3" >
+            <h3>Fortnite Teams</h3>
+          <div *ngFor="let team of teams">
+                  <div *ngIf="team?.game === 'LeagueofLegends'">
+                   <div id="team">
+                    <div class="card border-warning mb-3" style="max-width: 20rem;" >
+                        <div class="card-header"><h3>Team: <span style="float:right;">{{team?.Teamname}}</span></h3></div>
+                        <div class="card-body text-warning">
+                          <h4 class="card-title" style="text-align: left;">Server: <span style="float:right;">{{team?.Server}}</span></h4>
+                          <h4 class="card-title" style="text-align: left;">Country: <span style="float:right;">{{team?.country}}</span></h4>
+                          <h4 class="card-title" style="text-align: left;">Language: <span style="float:right;">{{team?.language}}</span></h4>
+                          <h4 class="card-title" style="text-align: left;">Goal: <span style="float:right;">{{team?.Teamgoal}}</span></h4>
+                        </div>
+                        <button id="button" type="button" class="btn btn-warning" (click)="leaveTeam(team?.TeamID)">Leave</button>
+                      </div>
+                      <!--<button type="button" class="btn btn-warning" id="save" (click)="onUpdate(player?.GamerId)">Save Changes</button>
+                      <button type="button" class="btn btn-warning" id="delete" (click)="onDelete(player?.GamerId)">Delete Player</button>
+                      -->
+                   </div>
+                      <div id="members">
+                      <button id="showB" type="button" class="btn btn-outline-warning" (click)="getTeamMembers(team?.TeamID)">Show Team</button>
+                        <div *ngFor="let member of members">
+                            <div [hidden]="!clicked">
+                          <table id="table" class="table table-hover">
+                              <tbody>
+                                <tr class="table-active">
+                                  <td>{{member.GamerName}}</td>
+                                  <td>{{member.Server}}</td>
+                                  <td>{{member.Role}}</td>
+                                  <td>{{member.Style}}</td>
+                                  <td>{{member.Motivation}}</td>
+                                </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
 </div>

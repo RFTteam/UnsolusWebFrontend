@@ -49,6 +49,52 @@ export class TeamService {
                 .map(this.extract)
     }
 
+    getMyTeams(): Observable<Team[]>{
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let headers = new Headers({ 
+            'X-Requested-With' : 'XMLHttpRequest',
+            'Content-Type' : 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get('http://localhost:8000/api/myteams?token=' +  currentUser.token ,options)
+        .map(this.extract)
+
+    }
+
+    getTeamMembers(id:number){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let headers = new Headers({
+            'X-Requested-With' : 'XMLHttpRequest',
+            'Content-Type' : 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(`http://localhost:8000/api/teammembers/${id}/?token=` + currentUser.token, options)
+             .map((response: Response) => {
+                 return response.json()});
+    }
+    joinTeam(id:number){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let headers = new Headers({
+            'X-Requested-With' : 'XMLHttpRequest',
+            'Content-Type' : 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(`http://localhost:8000/api/teammember/${id}/?token=` + currentUser.token, options)
+             .map((response: Response) => {
+                 return response.json()});
+    }
+    leaveTeam(id:number){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let headers = new Headers({
+            'X-Requested-With' : 'XMLHttpRequest',
+            'Content-Type' : 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.delete(`http://localhost:8000/api/teammember/${id}/?token=` + currentUser.token, options)
+             .map((response: Response) => {
+                 return response.json()});
+    }
+
     private extract(response: Response){
         let body = response.json();
         return body || [];

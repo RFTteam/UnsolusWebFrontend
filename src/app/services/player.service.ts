@@ -57,7 +57,28 @@ export class PlayerService {
              .map((response: Response) => {
                  return response.json()});
     }
-    
+    getLanguage(id: number){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let headers = new Headers({
+            'X-Requested-With' : 'XMLHttpRequest',
+            'Content-Type' : 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(`http://localhost:8000/api/player/language/${id}/?token=` + currentUser.token, options)
+             .map((response: Response) => {
+                 return response.json()});
+    }
+    getEmail(id: number){
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        let headers = new Headers({
+            'X-Requested-With' : 'XMLHttpRequest',
+            'Content-Type' : 'application/json'
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.get(`http://localhost:8000/api/player/email/${id}/?token=` + currentUser.token, options)
+             .map((response: Response) => {
+                 return response.json()});
+    }
     deletePlayer(id:number){
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         let headers = new Headers({

@@ -77,19 +77,20 @@
 
     <div id="card-container">
         <div *ngFor="let player of selectedData" id="cards">
-
-            <div class="card text-white bg-primary mb-3" id="card">
+            <div class="card text-white bg-primary mb-3" id="card"  >
                 <div class="card-header" id="headerGame">{{player.game}}</div>
                 <div class="card-body">
                     <h4 class="card-title" id="name">{{player.GamerName}}</h4>
                     <p class="card-text" id="rank">{{player.Rank}}</p>
                     <p class="card-text" id="role">{{player.Role}}</p>
-
+                    <p class="card-text" id="motivation">{{player.Server}}</p>
                     <p class="card-text" id="motivation">{{player.Motivation}}</p>
+                    <p class="card-text" id="motivation">{{selectedData.language}}</p>
+                    
                 </div>
-                <div class="card-footer" id="headerGame">{{player.Server}}</div>
+                <div class="card-footer" id="headerGame"><button id="contact" type="button" target="_self" class="btn btn-warning"  (click)="goGmail()">Contact</button></div>
             </div>
-
         </div>
-    </div>
+        </div>
+    
 </div>

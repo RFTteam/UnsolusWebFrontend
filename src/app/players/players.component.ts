@@ -58,6 +58,7 @@ export class PlayersComponent implements OnInit {
     this.getMyPlayers();
   }
 
+
   onChange(selected) {
     console.log(selected);
     this.selectedGame = selected;
@@ -70,6 +71,7 @@ export class PlayersComponent implements OnInit {
         response => console.log(this.playerForm.value),
         error => console.log(error)
       );
+      setTimeout(location.reload.bind(location), 1000);
   }
   onUpdate(id: number){
     for(this.player of this.players){
@@ -85,6 +87,7 @@ export class PlayersComponent implements OnInit {
       }    
       );
   }
+
 
   onDelete(id:number){
     this.playerService.deletePlayer(id)
@@ -145,6 +148,9 @@ export class PlayersComponent implements OnInit {
     allPlayers: Player[] = [];
     user: User;
     users: User[] = [];
+    language;
+    player2: Player;
+    email: string;
     selectGame;
     selectRank;
     selectRole;
@@ -161,12 +167,32 @@ export class PlayersComponent implements OnInit {
       this.getAllPlayers();
     }
 
+    goGmail(){
+      window.open("https://accounts.google.com/ServiceLogin/signinchooser?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F%3Ftab%3Dwm&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin","_blank");
+      //window.location.href='https://accounts.google.com/';
+    }
+
+    getLanguage(id){
+        this.playerService.getLanguage(id)
+            .subscribe(language =>{
+              this.language = language;
+              console.log(this.language);
+            })
+    }
+
+    getEmail(id){
+      //(mouseenter)="getLanguage(player.GamerId)"
+    }
     onSelect(val) {
-      console.log("val :",val);
-      console.log("selectedgame:",this.selectedGame);
-      console.log("Rank:",this.selectRank);
-      console.log("Role:", this.selectRole);
+      
+      
+    
       if(this.selectedGame != null){
+        /*for(let player of this.selectedData){
+          this.language = this.getLanguage(player.GamerId);
+           console.log(this.language);
+           this.selectedData.language = this.language;
+         }*/
       this.selectedData = this.allPlayers.filter(x => x.game == this.selectedGame);
         if(this.selectRank != null){
           this.selectedData = this.selectedData.filter(x => x.Rank == this.selectRank);
@@ -184,6 +210,7 @@ export class PlayersComponent implements OnInit {
           this.selectedData = this.selectedData.filter(x => x.Motivation == this.selectMotivation);
         }
       }
+      
     }
 
     getUsers(){

@@ -1,0 +1,55 @@
+#parent{
+    display: flex;
+    margin-left: -10%;
+    margin-right: -10%;
+}
+#navbar{
+    height: 50px;
+    margin: 0px 0px 0px 80px;
+}
+#filter{
+    width: 250px;
+    max-height: 1000px;
+    float: left;
+    margin: 20px 20px 20px 20px;
+}
+#card-container{
+    flex: 1;
+    margin: 20px 0px 0px 0px;
+}
+#cards{
+    display: inline-flex;
+    float:left;
+    
+}
+#card{
+    max-width: 250px;
+    max-height: 250px;
+    margin: 4px;
+}
+#headerGame{
+    text-align: center;
+    font-weight: bold;
+}
+#name{
+    margin: 2px 0px 5px 0px;
+    text-align: center;
+    color:rgb(255, 176, 7);
+}
+#rank{
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+
+}
+#role{
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+}
+#region{
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+}
+#motivation{
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+}

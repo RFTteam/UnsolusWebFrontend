@@ -2,20 +2,23 @@
   <div class="container">
     <a href="../" class="navbar-brand">
       <img src="assets/unsolus.png" id="image">
-      <h3>Unsolus</h3>    
+      <h3>Unsolus</h3>
     </a>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a class="nav-link" routerLink="allplayer" id="allplayer">Players</a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="allplayer" id="allplayer">Players</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="allteams" id="allteams">Teams</a>
+        </li>
         <!--<li class="nav-item">
           <a class="nav-link" routerLink="dota2" id="dota"></a>
         </li>
       -->
         <li class="nav-item">
           <a class="nav-link" routerLink="league" id="legends"></a>
-        </li>    
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!isLoggedIn">
@@ -26,21 +29,21 @@
             <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Username</a>
               <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-              <a class="dropdown-item" [routerLink]="['/player']">Player</a>
-              <a [routerLink]="['/profile']" class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" (click)="logout()" >Logout</a>
+                <a class="dropdown-item" [routerLink]="['/player']"> My Players</a>
+                <a class="dropdown-item" [routerLink]="['/team']">My Teams</a>
+                <a [routerLink]="['/profile']" class="dropdown-item" href="#">My Profile</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
               </div>
             </div>
           </ul>
         </li>
         <li *ngIf="!isLoggedIn">
           <button id="regButton" [routerLink]="['/register']" class="btn btn-secondary">Register</button>
-        </li> 
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-<div class = "container">
+<div class="container">
   <router-outlet></router-outlet>
 </div>
-

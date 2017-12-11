@@ -13,13 +13,14 @@ import { AppComponent } from './app.component';
 
 //import { AlertComponent } from './directives/index';
 //import { AuthGuard } from './guards/index';
-import { AuthenticationService, UserService} from './services/index';
+import { AuthenticationService, UserService, PlayerService, TeamService} from './services/index';
 
 import { Dota2Component } from './dota2/index';
 import { LeagueComponent } from './league/index';
 import { PlayersComponent } from './players/index';
 import { AllPlayersComponent } from './players/index';
 import { TeamsComponent } from './teams/index';
+import { AllTeamsComponent } from './teams/index';
 
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -34,6 +35,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     PlayersComponent,
     AllPlayersComponent,
     TeamsComponent,
+    AllTeamsComponent,
     Dota2Component,
     LeagueComponent,
     LoginComponent,
@@ -53,13 +55,9 @@ import { MyDatePickerModule } from 'mydatepicker';
    // AuthGuard,
    // AlertService,
     AuthenticationService,
-    UserService
-    
-
-    // fake backend készítéséhez
-    //fakeBackendProvider,
-    //MockBackend,
-    //BaseRequestOptions
+    UserService,
+    PlayerService,
+    TeamService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,4 +7,5 @@ export interface Player {
     Style: string;
     Server: string;
     Motivation: string;
+    language: string;
 }

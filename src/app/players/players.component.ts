@@ -150,7 +150,8 @@ export class PlayersComponent implements OnInit {
     users: User[] = [];
     language;
     player2: Player;
-    email: string;
+    email;
+    ID;
     selectGame;
     selectRank;
     selectRole;
@@ -161,6 +162,7 @@ export class PlayersComponent implements OnInit {
     constructor(playerService: PlayerService, userService:UserService){
       super(playerService,userService);
       this.selectedData = this.allPlayers;
+      
     }
     ngOnInit() {
       this.getUsers();
@@ -179,15 +181,26 @@ export class PlayersComponent implements OnInit {
               console.log(this.language);
             })
     }
-
+    timer(){
+      this.email= null;
+      
+    }
     getEmail(id){
-      //(mouseenter)="getLanguage(player.GamerId)"
+      this.ID = id;
+      console.log(this.ID);
+      this.playerService.getEmail(id)
+          .subscribe(email =>{
+            this.email = email;
+            console.log("Email: ",this.email);
+          })
+          setTimeout(function(){this.timer();}.bind(this),5000);
     }
     onSelect(val) {
       
       
     
       if(this.selectedGame != null){
+        
         /*for(let player of this.selectedData){
           this.language = this.getLanguage(player.GamerId);
            console.log(this.language);
@@ -226,7 +239,9 @@ export class PlayersComponent implements OnInit {
       .subscribe(allPlayers => {
           this.allPlayers = allPlayers;
           
-          console.log(allPlayers);
+          //console.log(allPlayers);
+          
+         
       })
     }
   }

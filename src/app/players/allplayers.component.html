@@ -86,9 +86,13 @@
                     <p class="card-text" id="motivation">{{player.Server}}</p>
                     <p class="card-text" id="motivation">{{player.Motivation}}</p>
                     <p class="card-text" id="motivation">{{selectedData.language}}</p>
+                    <p id="email" *ngIf="player.GamerId === ID">{{email}}</p>
                     
                 </div>
-                <div class="card-footer" id="headerGame"><button id="contact" type="button" target="_self" class="btn btn-warning"  (click)="goGmail()">Contact</button></div>
+                <div class="card-footer" id="headerGame"><button id="contact" type="button" target="_self" class="btn btn-warning"  (click)="goGmail()">Gmail</button>
+                    <button id="contact" type="button" class="btn btn-warning" (mouseenter)="getEmail(player.GamerId)">Email</button>
+                    
+                </div>
             </div>
         </div>
         </div>

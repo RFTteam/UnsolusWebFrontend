@@ -8,4 +8,5 @@ export interface Player {
     Server: string;
     Motivation: string;
     language: string;
+    Email: string;
 }

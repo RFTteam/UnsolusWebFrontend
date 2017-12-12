@@ -76,8 +76,7 @@ export class PlayerService {
         });
         let options = new RequestOptions({ headers: headers });
         return this.http.get(`http://localhost:8000/api/player/email/${id}/?token=` + currentUser.token, options)
-             .map((response: Response) => {
-                 return response.json()});
+             .map(this.extract);
     }
     deletePlayer(id:number){
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

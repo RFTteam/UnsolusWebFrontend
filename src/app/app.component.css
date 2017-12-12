@@ -85,3 +85,13 @@
 .dropdown:hover #btnGroupDrop1 {
     background-color: #3e8e41;
 }
+#title{
+  margin-left: 1%;
+}
+#main{
+
+  height: 500px;
+}
+#tit{
+  font-size: 600;
+}

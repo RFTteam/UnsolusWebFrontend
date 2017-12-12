@@ -1,8 +1,9 @@
+<div class="container">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
+  
     <a href="../" class="navbar-brand">
       <img src="assets/unsolus.png" id="image">
-      <h3>Unsolus</h3>
+      <h3 id="title">Unsolus</h3>
     </a>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
@@ -12,14 +13,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="allteams" id="allteams">Teams</a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" routerLink="dota2" id="dota"></a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" routerLink="league" id="legends"></a>
-        </li>
-      -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!isLoggedIn">
@@ -43,8 +36,30 @@
         </li>
       </ul>
     </div>
-  </div>
+ 
 </nav>
+  <div id="main">
+    <div>
+      <ul id="tit">
+        <a >Welcome to Unsolus!</a>
+            <li>
+              <a>1. Please create an account at Register </a>
+              
+            </li>
+            <li>
+                <a>2. After Login you can create your player and team </a>
+            </li>
+            <li>
+                <a>3. At Players tab you can search among players </a>
+            </li>
+            <li>
+                <a>4. At Teams tab you can search among teams </a>
+            </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

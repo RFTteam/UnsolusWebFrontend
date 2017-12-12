@@ -12,11 +12,9 @@ import { routes } from './app.router';
 import { AppComponent } from './app.component';
 
 //import { AlertComponent } from './directives/index';
-//import { AuthGuard } from './guards/index';
+import { AuthGuard } from './guards/index';
 import { AuthenticationService, UserService, PlayerService, TeamService} from './services/index';
 
-import { Dota2Component } from './dota2/index';
-import { LeagueComponent } from './league/index';
 import { PlayersComponent } from './players/index';
 import { AllPlayersComponent } from './players/index';
 import { TeamsComponent } from './teams/index';
@@ -36,8 +34,6 @@ import { MyDatePickerModule } from 'mydatepicker';
     AllPlayersComponent,
     TeamsComponent,
     AllTeamsComponent,
-    Dota2Component,
-    LeagueComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent
@@ -52,7 +48,7 @@ import { MyDatePickerModule } from 'mydatepicker';
     ReactiveFormsModule 
   ],
   providers: [
-   // AuthGuard,
+    AuthGuard,
    // AlertService,
     AuthenticationService,
     UserService,
